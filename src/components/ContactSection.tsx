@@ -148,7 +148,7 @@ const ContactSection = () => {
                     <div className="glass-card p-4 text-center">
                       <Mail className="h-8 w-8 text-blue-500 mx-auto mb-2" />
                       <p className="text-sm font-medium">Email</p>
-                      <p className="text-xs text-slate-500">< 24 hours</p>
+                      <p className="text-xs text-slate-500">24 hours</p>
                     </div>
                     <div className="glass-card p-4 text-center">
                       <Phone className="h-8 w-8 text-green-500 mx-auto mb-2" />
