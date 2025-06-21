@@ -104,11 +104,47 @@
 
 @layer components {
   .glass-effect {
-    @apply bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10;
+    @apply bg-white/20 dark:bg-white/10 backdrop-blur-xl border border-white/30 dark:border-white/20;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark .glass-effect {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   
   .glass-card {
-    @apply glass-effect rounded-2xl shadow-lg;
+    @apply glass-effect rounded-2xl shadow-2xl;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.8s ease-in-out;
+  }
+
+  .glass-card:hover::before {
+    left: 100%;
+  }
+
+  .glass-card:hover {
+    @apply scale-[1.02];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.08));
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .glass-card:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
   
   .gradient-text {
@@ -117,18 +153,58 @@
   
   .ios-button {
     @apply relative overflow-hidden rounded-full px-8 py-3 font-medium transition-all duration-300 hover:scale-105 active:scale-95;
+    backdrop-filter: blur(20px);
   }
   
   .ios-button-primary {
-    @apply ios-button bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:shadow-xl;
+    @apply ios-button bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-2xl hover:shadow-3xl;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(147, 51, 234, 0.9));
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .ios-button-primary:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(147, 51, 234, 1));
+    box-shadow: 0 16px 48px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
   
   .ios-button-secondary {
-    @apply ios-button glass-effect text-foreground hover:bg-white/20 dark:hover:bg-white/10;
+    @apply ios-button glass-effect text-foreground hover:bg-white/30 dark:hover:bg-white/15;
   }
 
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+
+  .liquid-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: inherit;
+    z-index: -1;
+    animation: liquid-flow 3s ease-in-out infinite;
+  }
+
+  @keyframes liquid-flow {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.05); }
+  }
+
+  .dark .liquid-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -143,6 +219,7 @@
 
 ::-webkit-scrollbar-thumb {
   @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  backdrop-filter: blur(10px);
 }
 
 ::-webkit-scrollbar-thumb:hover {

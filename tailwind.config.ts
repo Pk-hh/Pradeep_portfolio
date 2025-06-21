@@ -126,6 +126,32 @@ export default {
 					'50%': {
 						transform: 'translateY(-10px)'
 					}
+				},
+				'liquid-flow': {
+					'0%, 100%': {
+						transform: 'rotate(0deg) scale(1)',
+						opacity: '0.3'
+					},
+					'50%': {
+						transform: 'rotate(180deg) scale(1.05)',
+						opacity: '0.6'
+					}
+				},
+				'glass-shimmer': {
+					'0%': {
+						transform: 'translateX(-100%)'
+					},
+					'100%': {
+						transform: 'translateX(100%)'
+					}
+				},
+				'liquid-wave': {
+					'0%, 100%': {
+						borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%'
+					},
+					'50%': {
+						borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%'
+					}
 				}
 			},
 			animation: {
@@ -134,10 +160,18 @@ export default {
 				'fade-in': 'fade-in 0.6s ease-out',
 				'fade-in-up': 'fade-in-up 0.8s ease-out',
 				'scale-in': 'scale-in 0.5s ease-out',
-				'float': 'float 3s ease-in-out infinite'
+				'float': 'float 3s ease-in-out infinite',
+				'liquid-flow': 'liquid-flow 4s ease-in-out infinite',
+				'glass-shimmer': 'glass-shimmer 2s ease-in-out infinite',
+				'liquid-wave': 'liquid-wave 6s ease-in-out infinite'
 			},
 			backdropBlur: {
 				xs: '2px',
+			},
+			boxShadow: {
+				'3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',
+				'glass': '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+				'glass-hover': '0 16px 64px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
 			}
 		}
 	},
